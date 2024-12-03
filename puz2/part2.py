@@ -21,7 +21,7 @@ def test(values, retry):
             or (r < l and dir == 1)
             or (abs(r - l) < 1 or abs(r - l) > 3)
         ):
-            return 0 + min(
+            return min(
                 1,
                 retry * test(without(values, x), retry - 1)
                 + test(without(values, y), retry - 1)
@@ -44,6 +44,6 @@ if __name__ == "__main__":
         for line in fp:
             values = [int(v) for v in line.split()]
             r = test(values, 1)
-            print(values, r)
+            # print(values, r)
             safe += r
         print(safe)

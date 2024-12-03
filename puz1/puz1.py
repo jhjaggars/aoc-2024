@@ -12,7 +12,7 @@ r_counter = Counter(r_list)
 l_list.sort()
 r_list.sort()
 
-diff = sum(abs(y -x) for x, y in zip(l_list, r_list))
+diff = sum(abs(y - x) for x, y in zip(l_list, r_list))
 sim_score = sum(x * r_counter.get(x, 0) for x in l_list)
 
 print(diff)
