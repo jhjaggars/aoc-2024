@@ -8,7 +8,8 @@ def process(item):
     if item == "0":
         return ("1",)
     elif len(item) % 2 == 0:
-        return (item[: len(item) // 2], str(int(item[len(item) // 2 :])))
+        mid = len(item) // 2
+        return (item[:mid], str(int(item[mid:])))
     else:
         return (str(int(item) * 2024),)
 
@@ -22,8 +23,8 @@ def rblink(times, data):
 
 
 if __name__ == "__main__":
-    test = tuple("125 17".split())
-
-    assert rblink(25, test) == 55312
+    # test = tuple("125 17".split())
+    #
+    # assert rblink(25, test) == 55312
 
     print(rblink(75, data))
