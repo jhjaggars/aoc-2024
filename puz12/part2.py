@@ -71,7 +71,6 @@ if __name__ == "__main__":
         total = 0
         all_seen = set()
         for cell in data:
-            cv = data[cell]
             if cell in all_seen:
                 continue
             seen = set()
