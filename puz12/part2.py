@@ -56,18 +56,12 @@ def calculate_walls(perimeters):
     while perimeters:
         perimeter = perimeters.pop()
         cell, adjacent = perimeter
+        walls += 1
         # real is the row
         # imag is the col
-        if cell.real == adjacent.real:
-            # same row -> vertical
-            walls += 1
-            for vdir in vdirs:
-                trace(cell, adjacent, vdir, perimeters)
-        else:
-            # same col -> horizontal
-            walls += 1
-            for hdir in hdirs:
-                trace(cell, adjacent, hdir, perimeters)
+        dirs = vdirs if cell.real == adjacent.real else hdirs
+        for dir in dirs:
+            trace(cell, adjacent, dir, perimeters)
 
     return walls
 
