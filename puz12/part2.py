@@ -15,7 +15,6 @@ def parse(fp):
 
 def test(data, cell, seen, perimeters):
     area = 1
-    val = data[cell]
     seen.add(cell)
     for dir in dirs:
 
@@ -26,17 +25,16 @@ def test(data, cell, seen, perimeters):
             perimeters.add((cell, pdir))
             continue
 
-        peek = data[pdir]
         # already processed this cell
         if pdir in seen:
             continue
 
-        # flood to the cell
-        if peek == val:
-            v = test(data, pdir, seen, perimeters)
-            area += v
-        else:  # another plot type, incr perimeters
+        # another plot type, incr perimeters
+        if data[pdir] != data[cell]:
             perimeters.add((cell, pdir))
+            continue
+
+        area += test(data, pdir, seen, perimeters)
 
     return area
 
